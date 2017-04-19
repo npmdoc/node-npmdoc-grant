@@ -1,0 +1,686 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/simov/grant"
+
+    >grant (v3.7.1)</a>
+</h1>
+<h4>OAuth Middleware for Express, Koa and Hapi</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grant">module grant</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.express">
+            function <span class="apidocSignatureSpan">grant.</span>express
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.hapi">
+            function <span class="apidocSignatureSpan">grant.</span>hapi
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.koa">
+            function <span class="apidocSignatureSpan">grant.</span>koa
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">grant.</span>config</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">grant.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grant.config">module grant.config</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.config.init">
+            function <span class="apidocSignatureSpan">grant.config.</span>init
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.config.initProvider">
+            function <span class="apidocSignatureSpan">grant.config.</span>initProvider
+            <span class="apidocSignatureSpan">(provider, options, server, name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.config.provider">
+            function <span class="apidocSignatureSpan">grant.config.</span>provider
+            <span class="apidocSignatureSpan">(config, session)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.config.state">
+            function <span class="apidocSignatureSpan">grant.config.</span>state
+            <span class="apidocSignatureSpan">(provider)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">grant.config.</span>oauth</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">grant.config.</span>reserved</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grant.utils">module grant.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.utils.error">
+            function <span class="apidocSignatureSpan">grant.utils.</span>error
+            <span class="apidocSignatureSpan">(err, res, body)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.utils.redirect_uri">
+            function <span class="apidocSignatureSpan">grant.utils.</span>redirect_uri
+            <span class="apidocSignatureSpan">(provider)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grant.utils.toQuerystring">
+            function <span class="apidocSignatureSpan">grant.utils.</span>toQuerystring
+            <span class="apidocSignatureSpan">(provider, body, err)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grant" id="apidoc.module.grant">module grant</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grant.express" id="apidoc.element.grant.express">
+        function <span class="apidocSignatureSpan">grant.</span>express
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">express = function () {
+  return require(&#x27;./lib/consumer/express&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Alternative Require
+
+Alternatively you can require Grant directly *(each pair is identical)*:
+
+```js
+// Express
+var Grant = require(&#x27;grant-express&#x27;)
+var Grant = require(&#x27;grant&#x27;).<span class="apidocCodeKeywordSpan">express</span>()
+// Koa
+var Grant = require(&#x27;grant-koa&#x27;)
+var Grant = require(&#x27;grant&#x27;).koa()
+// Hapi
+var Grant = require(&#x27;grant-hapi&#x27;)
+var Grant = require(&#x27;grant&#x27;).hapi()
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.hapi" id="apidoc.element.grant.hapi">
+        function <span class="apidocSignatureSpan">grant.</span>hapi
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hapi = function () {
+  return require(&#x27;./lib/consumer/hapi&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var Grant = require(&#x27;grant-express&#x27;)
+var Grant = require(&#x27;grant&#x27;).express()
+// Koa
+var Grant = require(&#x27;grant-koa&#x27;)
+var Grant = require(&#x27;grant&#x27;).koa()
+// Hapi
+var Grant = require(&#x27;grant-hapi&#x27;)
+var Grant = require(&#x27;grant&#x27;).<span class="apidocCodeKeywordSpan">hapi</span>()
+```
+
+&#x3e; Koa requires two additional dependencies: `thunkify` and `koa-route`
+
+
+## Path Prefix
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.koa" id="apidoc.element.grant.koa">
+        function <span class="apidocSignatureSpan">grant.</span>koa
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">koa = function () {
+  return require(&#x27;./lib/consumer/koa&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+// Express
+var Grant = require(&#x27;grant-express&#x27;)
+var Grant = require(&#x27;grant&#x27;).express()
+// Koa
+var Grant = require(&#x27;grant-koa&#x27;)
+var Grant = require(&#x27;grant&#x27;).<span class="apidocCodeKeywordSpan">koa</span>()
+// Hapi
+var Grant = require(&#x27;grant-hapi&#x27;)
+var Grant = require(&#x27;grant&#x27;).hapi()
+```
+
+&#x3e; Koa requires two additional dependencies: `thunkify` and `koa-route`
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grant.config" id="apidoc.module.grant.config">module grant.config</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grant.config.init" id="apidoc.element.grant.config.init">
+        function <span class="apidocSignatureSpan">grant.config.</span>init
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function (config) {
+  config = config || {}
+  var server = config.server || {}
+
+  // generate provider options
+  var result = {}
+  for (var key in config) {
+    if (key === &#x27;server&#x27;) {
+      continue
+    }
+    var provider = dcopy(this.oauth[key] || {})
+    var options = config[key] || {}
+
+    var generated = this.initProvider(provider, options, server, key)
+    result[generated.name] = generated
+  }
+
+  result.server = server
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.config.initProvider" id="apidoc.element.grant.config.initProvider">
+        function <span class="apidocSignatureSpan">grant.config.</span>initProvider
+        <span class="apidocSignatureSpan">(provider, options, server, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">initProvider = function (provider, options, server, name) {
+
+  // merge provider options with user options
+
+
+  // cleanup empty values in custom_params
+  ;(function () {
+    if (options.custom_params) {
+      var params = options.custom_params
+      for (var key in params) {
+        if (!params[key]) {
+          delete params[key]
+        }
+      }
+      if (!Object.keys(params).length) {
+        delete options.custom_params
+      }
+    }
+  })()
+
+  // set reserved keys
+  this.reserved.forEach(function (key) {
+    var value = options[key] || server[key] || provider[key]
+    if (value) {
+      provider[key] = value
+    }
+  })
+
+
+  // transformations
+
+
+  // provider shortcuts
+  if (name) {
+    provider[name] = true
+    provider.name = name
+  }
+
+
+  // oauth credentials
+  ;(function () {
+    var key, secret
+    if (provider.oauth === 1) {
+      key = provider.consumer_key || provider.key
+      secret = provider.consumer_secret || provider.secret
+    }
+    else if (provider.oauth === 2) {
+      key = provider.client_id || provider.key
+      secret = provider.client_secret || provider.secret
+    }
+    if (key) {
+      provider.key = key
+    }
+    if (secret) {
+      provider.secret = secret
+    }
+  })()
+
+
+  // oauth scope
+  if (provider.scope) {
+    if (provider.scope instanceof Array) {
+      provider.scope = provider.scope.join(provider.scope_delimiter || &#x27;,&#x27;)
+    }
+    else if (typeof provider.scope === &#x27;object&#x27;) {
+      provider.scope = JSON.stringify(provider.scope)
+    }
+  }
+
+
+  // custom_parameters
+  ;(function () {
+    if (provider.custom_parameters) {
+      var params = provider.custom_params || {}
+      for (var key in options) {
+        if (exports.reserved.indexOf(key) === -1 &#x26;&#x26;
+            provider.custom_parameters.indexOf(key) !== -1) {
+
+          params[key] = options[key]
+        }
+      }
+      if (Object.keys(params).length) {
+        provider.custom_params = params
+      }
+    }
+  })()
+
+
+  // static overrides
+  ;(function () {
+    var overrides = {}
+    for (var key in options) {
+      if (provider.custom_parameters &#x26;&#x26;
+          provider.custom_parameters.indexOf(key) !== -1) {
+        continue
+      }
+
+      if (exports.reserved.indexOf(key) === -1 &#x26;&#x26;
+          typeof options[key] === &#x27;object&#x27;) {
+
+        overrides[key] = exports.initProvider(dcopy(provider), options[key], {})
+      }
+    }
+    if (Object.keys(overrides).length) {
+      provider.overrides = overrides
+    }
+  })()
+
+
+  return provider
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        provider.custom_parameters.indexOf(key) !== -1) {
+      continue
+    }
+
+    if (exports.reserved.indexOf(key) === -1 &#x26;&#x26;
+        typeof options[key] === &#x27;object&#x27;) {
+
+      overrides[key] = exports.<span class="apidocCodeKeywordSpan">initProvider</span>(dcopy(provider), options[key], {})
+    }
+  }
+  if (Object.keys(overrides).length) {
+    provider.overrides = overrides
+  }
+})()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.config.provider" id="apidoc.element.grant.config.provider">
+        function <span class="apidocSignatureSpan">grant.config.</span>provider
+        <span class="apidocSignatureSpan">(config, session)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">provider = function (config, session) {
+  var name = session.provider
+  var provider = config[name]
+  var options = {}
+  var server = config.server || {}
+
+  if (!provider) {
+    if (this.oauth[name]) {
+      provider = dcopy(this.oauth[name])
+      provider = this.initProvider(provider, options, server, name)
+
+      config[provider.name] = provider
+    }
+    else {
+      provider = {}
+    }
+  }
+
+  if (session.override &#x26;&#x26; provider.overrides) {
+    var override = provider.overrides[session.override]
+    if (override) {
+      provider = override
+    }
+  }
+
+  if (session.dynamic) {
+    provider = dcopy(provider)
+    options = session.dynamic
+    provider = this.initProvider(provider, options, server)
+  }
+
+  if (provider.state) {
+    provider = dcopy(provider)
+    provider.state = this.state(provider)
+  }
+
+  return provider
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.config.state" id="apidoc.element.grant.config.state">
+        function <span class="apidocSignatureSpan">grant.config.</span>state
+        <span class="apidocSignatureSpan">(provider)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">state = function (provider) {
+  var state
+  if (typeof provider.state === &#x27;string&#x27; || typeof provider.state === &#x27;number&#x27;) {
+    state = provider.state.toString()
+  }
+  else if (typeof provider.state === &#x27;boolean&#x27; &#x26;&#x26; provider.state) {
+    state = crypto.randomBytes(10).toString(&#x27;hex&#x27;)
+  }
+  return state
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    provider = dcopy(provider)
+    options = session.dynamic
+    provider = this.initProvider(provider, options, server)
+  }
+
+  if (provider.state) {
+    provider = dcopy(provider)
+    provider.state = this.<span class="apidocCodeKeywordSpan">state</span>(provider)
+  }
+
+  return provider
+}
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grant.utils" id="apidoc.module.grant.utils">module grant.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grant.utils.error" id="apidoc.element.grant.utils.error">
+        function <span class="apidocSignatureSpan">grant.utils.</span>error
+        <span class="apidocSignatureSpan">(err, res, body)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (err, res, body) {
+  if (err) {
+    return this.toQuerystring({}, {error: err.message}, true)
+  }
+  if (res.statusCode &#x3c; 200 || res.statusCode &#x3e; 299) {
+    return this.toQuerystring({}, body, true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.utils.redirect_uri" id="apidoc.element.grant.utils.redirect_uri">
+        function <span class="apidocSignatureSpan">grant.utils.</span>redirect_uri
+        <span class="apidocSignatureSpan">(provider)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">redirect_uri = function (provider) {
+  return provider.redirect_uri ||
+    [
+      provider.protocol,
+      &#x27;://&#x27;,
+      provider.host,
+      (provider.path || &#x27;&#x27;),
+      &#x27;/connect/&#x27;,
+      provider.name,
+      &#x27;/callback&#x27;
+    ].join(&#x27;&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grant.utils.toQuerystring" id="apidoc.element.grant.utils.toQuerystring">
+        function <span class="apidocSignatureSpan">grant.utils.</span>toQuerystring
+        <span class="apidocSignatureSpan">(provider, body, err)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toQuerystring = function (provider, body, err) {
+  var data
+  try {
+    data = JSON.parse(body)
+  }
+  catch (e) {
+    data = qs.parse(body)
+  }
+
+  var result = {}
+  if (provider.concur) {
+    result.access_token = body.replace(
+      /[\s\S]+&#x3c;Token&#x3e;([^&#x3c;]+)&#x3c;\/Token&#x3e;[\s\S]+/, &#x27;$1&#x27;)
+    result.refresh_token = body.replace(
+      /[\s\S]+&#x3c;Refresh_Token&#x3e;([^&#x3c;]+)&#x3c;\/Refresh_Token&#x3e;[\s\S]+/, &#x27;$1&#x27;)
+    data = body
+  }
+  else if (provider.elance) {
+    result.access_token = data.data.access_token
+    result.refresh_token = data.data.refresh_token
+  }
+  else if (provider.getpocket) {
+    result.access_token = data.access_token
+  }
+  else if (provider.yammer) {
+    result.access_token = data.access_token.token
+  }
+
+  else if (provider.oauth === 1) {
+    for (var key in data) {
+      if (key === &#x27;oauth_token&#x27;) {
+        result.access_token = data.oauth_token
+      }
+      else if (key === &#x27;oauth_token_secret&#x27;) {
+        result.access_secret = data.oauth_token_secret
+      }
+    }
+  }
+  else if (provider.oauth === 2) {
+    for (var key in data) {
+      if (key === &#x27;access_token&#x27;) {
+        result.access_token = data.access_token
+      }
+      else if (key === &#x27;refresh_token&#x27;) {
+        result.refresh_token = data.refresh_token
+      }
+    }
+  }
+
+  result[err ? &#x27;error&#x27; : &#x27;raw&#x27;] = data
+  return qs.stringify(result)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  result[err ? &#x27;error&#x27; : &#x27;raw&#x27;] = data
+  return qs.stringify(result)
+}
+
+exports.error = function (err, res, body) {
+  if (err) {
+    return this.<span class="apidocCodeKeywordSpan">toQuerystring</span>({}, {error: err.message}, true)
+  }
+  if (res.statusCode &#x3c; 200 || res.statusCode &#x3e; 299) {
+    return this.toQuerystring({}, body, true)
+  }
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
